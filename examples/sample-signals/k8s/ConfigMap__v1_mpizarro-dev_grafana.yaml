@@ -21,7 +21,7 @@ metadata:
     meta.helm.sh/release-namespace: mpizarro-dev
   labels:
     app.kubernetes.io/instance: grafana
-    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/managed-by: app-flask
     app.kubernetes.io/name: grafana
     app.kubernetes.io/version: 10.4.0
     helm.sh/chart: grafana-7.3.7

@@ -6,7 +6,7 @@ metadata:
     meta.helm.sh/release-namespace: mpizarro-dev
   labels:
     app.kubernetes.io/instance: prometheus
-    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/managed-by: app-flask
     app.kubernetes.io/name: alertmanager
     app.kubernetes.io/version: v0.27.0
     helm.sh/chart: alertmanager-1.9.0

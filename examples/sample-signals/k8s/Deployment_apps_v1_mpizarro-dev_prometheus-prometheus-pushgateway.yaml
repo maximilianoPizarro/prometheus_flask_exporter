@@ -6,8 +6,9 @@ metadata:
     meta.helm.sh/release-namespace: mpizarro-dev
   labels:
     app.kubernetes.io/instance: prometheus
-    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/managed-by: app-flask
     app.kubernetes.io/name: prometheus-pushgateway
+    app.openshift.io/runtime: prometheus
     app.kubernetes.io/version: v1.7.0
     helm.sh/chart: prometheus-pushgateway-2.8.0
   name: prometheus-prometheus-pushgateway
@@ -26,7 +27,7 @@ spec:
       creationTimestamp: null
       labels:
         app.kubernetes.io/instance: prometheus
-        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/managed-by: app-flask
         app.kubernetes.io/name: prometheus-pushgateway
         app.kubernetes.io/version: v1.7.0
         helm.sh/chart: prometheus-pushgateway-2.8.0
