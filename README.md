@@ -489,3 +489,12 @@ See a working sample app in the `examples` folder, and also the
 ## License
 
 MIT
+
+
+## OpenShift
+
+<p align="left">
+  <img src="https://github.com/maximilianoPizarro/prometheus_flask_exporter/blob/master/image/grafana-flask.PNG?raw=true" width="900" title="Run On Openshift">
+  <img src="https://github.com/maximilianoPizarro/prometheus_flask_exporter/blob/master/image/grafana-flask-dashboard.PNG?raw=true" width="900" title="Run On Openshift">  
+</p>
+

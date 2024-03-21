@@ -1,0 +1,47 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: https://github.com/maximilianoPizarro/prometheus_flask_exporter
+    openshift.io/generated-by: OpenShiftWebConsole
+  labels:
+    app: app
+    app.kubernetes.io/component: app
+    app.kubernetes.io/instance: app
+    app.kubernetes.io/name: app
+    app.kubernetes.io/part-of: app-flask
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: 3.9-ubi8
+  name: app
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: app:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: /examples/sample-signals/app
+    git:
+      ref: master
+      uri: https://github.com/maximilianoPizarro/prometheus_flask_exporter
+    type: Git
+  strategy:
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - generic:
+      secretReference:
+        name: app-generic-webhook-secret
+    type: Generic
+  - github:
+      secretReference:
+        name: app-github-webhook-secret
+    type: GitHub
+  - type: ConfigChange

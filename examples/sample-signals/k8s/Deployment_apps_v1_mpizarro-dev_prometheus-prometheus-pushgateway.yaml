@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: mpizarro-dev
+  labels:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-pushgateway
+    app.kubernetes.io/version: v1.7.0
+    helm.sh/chart: prometheus-pushgateway-2.8.0
+  name: prometheus-prometheus-pushgateway
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: prometheus
+      app.kubernetes.io/name: prometheus-pushgateway
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: prometheus
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: prometheus-pushgateway
+        app.kubernetes.io/version: v1.7.0
+        helm.sh/chart: prometheus-pushgateway-2.8.0
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - image: quay.io/prometheus/pushgateway:v1.7.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /-/healthy
+            port: 9091
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        name: pushgateway
+        ports:
+        - containerPort: 9091
+          name: metrics
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /-/ready
+            port: 9091
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: false
+          runAsNonRoot: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: storage-volume
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: prometheus-prometheus-pushgateway
+      serviceAccountName: prometheus-prometheus-pushgateway
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: storage-volume

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: https://github.com/maximilianoPizarro/prometheus_flask_exporter
+    openshift.io/generated-by: OpenShiftWebConsole
+  labels:
+    app: app
+    app.kubernetes.io/component: app
+    app.kubernetes.io/instance: app
+    app.kubernetes.io/name: app
+    app.kubernetes.io/part-of: app-flask
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: 3.9-ubi8
+  name: app
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 5000-tcp
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: app
+    deployment: app
+  sessionAffinity: None
+  type: ClusterIP

@@ -1,0 +1,25 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: app
+    app.kubernetes.io/component: app
+    app.kubernetes.io/instance: app
+    app.kubernetes.io/name: app
+    app.kubernetes.io/part-of: app-flask
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: 3.9-ubi8
+  name: app
+spec:
+  port:
+    targetPort: 5000-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: app
+    weight: 100
+  wildcardPolicy: None
