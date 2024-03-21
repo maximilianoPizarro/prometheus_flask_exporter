@@ -1,14 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    meta.helm.sh/release-name: grafana
-    meta.helm.sh/release-namespace: mpizarro-dev
   labels:
     app.kubernetes.io/instance: grafana
     app.kubernetes.io/managed-by: app-flask
     app.kubernetes.io/name: grafana
     app.kubernetes.io/version: 10.4.0
+    app.openshift.io/runtime: grafana
+    app.kubernetes.io/part-of: app-flask
     helm.sh/chart: grafana-7.3.7
   name: grafana
 spec:
@@ -35,8 +34,6 @@ spec:
       labels:
         app.kubernetes.io/instance: grafana
         app.kubernetes.io/name: grafana        
-        app.openshift.io/runtime: grafana
-        app.kubernetes.io/part-of: app-flask
     spec:
       automountServiceAccountToken: true
       containers:
