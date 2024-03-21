@@ -1,0 +1,42 @@
+
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ./BuildConfig_build.openshift.io_v1_mpizarro-dev_app.yaml
+- ./ConfigMap__v1_mpizarro-dev_grafana.yaml
+- ./ConfigMap__v1_mpizarro-dev_prometheus-alertmanager.yaml
+- ./ConfigMap__v1_mpizarro-dev_prometheus-server.yaml
+- ./Deployment_apps_v1_mpizarro-dev_app.yaml
+- ./Deployment_apps_v1_mpizarro-dev_grafana.yaml
+- ./Deployment_apps_v1_mpizarro-dev_prometheus-prometheus-pushgateway.yaml
+- ./Deployment_apps_v1_mpizarro-dev_prometheus-server.yaml
+- ./ImageStream_image.openshift.io_v1_mpizarro-dev_app.yaml
+- ./PersistentVolumeClaim__v1_mpizarro-dev_prometheus-server.yaml
+- ./Route_route.openshift.io_v1_mpizarro-dev_app.yaml
+- ./Route_route.openshift.io_v1_mpizarro-dev_grafa.yaml
+- ./Secret__v1_mpizarro-dev_app-generic-webhook-secret.yaml
+- ./Secret__v1_mpizarro-dev_app-github-webhook-secret.yaml
+- ./Secret__v1_mpizarro-dev_grafana-token-jj7ph.yaml
+- ./Secret__v1_mpizarro-dev_grafana.yaml
+- ./Secret__v1_mpizarro-dev_prometheus-alertmanager-dockercfg-5n6pl.yaml
+- ./Secret__v1_mpizarro-dev_prometheus-alertmanager-token-22zc6.yaml
+- ./Secret__v1_mpizarro-dev_prometheus-prometheus-node-exporter-dockercfg-pcldd.yaml
+- ./Secret__v1_mpizarro-dev_prometheus-prometheus-node-exporter-token-m2qfm.yaml
+- ./Secret__v1_mpizarro-dev_prometheus-prometheus-pushgateway-dockercfg-wksq4.yaml
+- ./Secret__v1_mpizarro-dev_prometheus-prometheus-pushgateway-token-vj5jd.yaml
+- ./Secret__v1_mpizarro-dev_prometheus-server-dockercfg-8wf4z.yaml
+- ./Secret__v1_mpizarro-dev_prometheus-server-token-9hqlq.yaml
+- ./ServiceAccount__v1_mpizarro-dev_grafana.yaml
+- ./ServiceAccount__v1_mpizarro-dev_prometheus-alertmanager.yaml
+- ./ServiceAccount__v1_mpizarro-dev_prometheus-prometheus-node-exporter.yaml
+- ./ServiceAccount__v1_mpizarro-dev_prometheus-prometheus-pushgateway.yaml
+- ./ServiceAccount__v1_mpizarro-dev_prometheus-server.yaml
+- ./Service__v1_mpizarro-dev_app.yaml
+- ./Service__v1_mpizarro-dev_grafana.yaml
+- ./Service__v1_mpizarro-dev_prometheus-alertmanager-headless.yaml
+- ./Service__v1_mpizarro-dev_prometheus-alertmanager.yaml
+- ./Service__v1_mpizarro-dev_prometheus-prometheus-node-exporter.yaml
+- ./Service__v1_mpizarro-dev_prometheus-prometheus-pushgateway.yaml
+- ./Service__v1_mpizarro-dev_prometheus-server.yaml
