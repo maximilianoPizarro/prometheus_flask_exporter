@@ -4,11 +4,9 @@ metadata:
   labels:
     app.kubernetes.io/component: server
     app.kubernetes.io/instance: prometheus
-    app.kubernetes.io/managed-by: app-flask
     app.kubernetes.io/name: prometheus    
     app.kubernetes.io/part-of: app-flask
     app.openshift.io/runtime: prometheus
-    app.kubernetes.io/version: v2.50.1
   name: prometheus-server
 spec:
   progressDeadlineSeconds: 600

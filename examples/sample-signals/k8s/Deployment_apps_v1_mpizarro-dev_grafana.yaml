@@ -8,7 +8,6 @@ metadata:
     app.kubernetes.io/version: 10.4.0
     app.openshift.io/runtime: grafana
     app.kubernetes.io/part-of: app-flask
-    helm.sh/chart: grafana-7.3.7
   name: grafana
 spec:
   progressDeadlineSeconds: 600
