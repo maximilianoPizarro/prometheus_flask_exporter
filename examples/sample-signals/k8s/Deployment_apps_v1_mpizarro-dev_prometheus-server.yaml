@@ -8,11 +8,9 @@ metadata:
     app.kubernetes.io/component: server
     app.kubernetes.io/instance: prometheus
     app.kubernetes.io/managed-by: app-flask
-    app.kubernetes.io/name: prometheus
-    app.openshift.io/runtime: prometheus
+    app.kubernetes.io/name: prometheus    
     app.kubernetes.io/part-of: app-flask
     app.kubernetes.io/version: v2.50.1
-    helm.sh/chart: prometheus-25.17.0
   name: prometheus-server
 spec:
   progressDeadlineSeconds: 600
@@ -23,6 +21,7 @@ spec:
       app.kubernetes.io/component: server
       app.kubernetes.io/instance: prometheus
       app.kubernetes.io/name: prometheus
+      app.openshift.io/runtime: prometheus
   strategy:
     type: Recreate
   template:
@@ -35,6 +34,7 @@ spec:
         app.kubernetes.io/name: prometheus
         app.kubernetes.io/part-of: app-flask
         app.kubernetes.io/version: v2.50.1
+        app.openshift.io/runtime: prometheus
         helm.sh/chart: prometheus-25.17.0
     spec:
       containers:
